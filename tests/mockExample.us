@@ -1,0 +1,27 @@
+
+# Class with a dependency
+
+spec Complex
+    with
+        dep = Mock.new
+        c = Complex.new(m)
+
+        case "call mock method and return it's value"
+            m.callMe(:arg) returns :result
+            c.foo(:arg) == :result
+        end
+    end
+end
+
+class Complex
+    def Complex(.dep)
+    end
+    def foo(x)
+        .dep.callMe x
+    end
+end
+
+class Main
+    def run
+    end
+end

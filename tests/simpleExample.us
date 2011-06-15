@@ -1,0 +1,23 @@
+
+# Simple class
+
+spec Simple
+    with
+        s = Simple.new
+        
+        case "should return 5"
+            s.value == 5
+        end
+    end
+end
+
+class Simple
+    def value
+        5
+    end
+end
+
+class Main
+    def run
+    end
+end

@@ -1,0 +1,11 @@
+# inline assembler
+
+class Main
+    def run
+        # out will not be compiled out
+        asm
+            ldi r16,0x0f
+            out PORTB,r16
+        end
+    end
+end
