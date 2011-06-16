@@ -1,0 +1,13 @@
+Sample:FF
+
+Sample value should return 5:
+    source.us(16): s.value == 5
+        expected: 5
+             got: 7
+
+Sample identity should return its argument:
+    source.us(21): s.identity(:dummy) == :dummy
+        expected: :dummy
+             got: nil
+
+0 passed, 2 failed

@@ -1,0 +1,29 @@
+
+class Simple
+    def value
+        7
+    end
+    def identity(arg)
+    end
+end
+
+spec Simple # class specification
+
+    s = Simple.new
+
+    spec value
+        case "should return 5"
+            s.value == 5
+        end
+    end
+    spec identity
+        case "should return its argument"
+            s.identity(:dummy) == :dummy
+        end
+    end
+end
+
+class Main
+    def run
+    end
+end
