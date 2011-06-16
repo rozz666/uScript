@@ -13,6 +13,7 @@
             <item> new </item>
             <item> return </item>
             <item> returns </item>
+            <item> mock </item>
         </list>
         <contexts>
             <context name="Normal" attribute="Normal Text" lineEndContext="#stay">

@@ -3,7 +3,7 @@
 
 spec Complex
     with
-        dep = Mock.new
+        mock m
         c = Complex.new(m)
 
         case "call mock method and return it's value"
@@ -14,7 +14,7 @@ spec Complex
 end
 
 class Complex
-    def Complex(.dep)
+    def new(.dep)
     end
     def foo(x)
         .dep.callMe x
