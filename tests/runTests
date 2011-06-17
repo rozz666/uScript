@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+
+class String
+    def printBracketed
+        each_line { |line| print "[#{line.chomp}]\n" }
+    end
+end
+
+testEnvPath = File.dirname(__FILE__)
+usTestPath = File.join(testEnvPath, '..', 'bin', 'uscript_test')
+
+if !ARGV[0]
+    print "usage: runTests <list>\n"
+    exit
+end
+
+testList = IO.readlines(ARGV[0])
+failed = []
+testsRun = 0
+testList.each do |testName|
+    testName = testName.chomp
+    testPath = File.join(testEnvPath, testName.gsub('.', '/'))
+    sourcePath = File.join(testPath, 'source.us')
+    expectedOutput = open(File.join(testPath, 'expectedOutput')).read
+    output = IO.popen("#{usTestPath} #{sourcePath}").read
+    print "#{testName}: "
+    if output
+        if output == expectedOutput
+            print "OK"
+        else
+            failed << [ testName, expectedOutput, output ]
+            print "FAILED"
+        end
+    else
+        print "ERROR"
+    end
+    print "\n"
+    testsRun = testsRun.next
+end
+
+print "\nFailures:\n"
+
+failed.each do |testName, expectedOutput, output|
+    print "\n#{testName}:\nExpected:\n"
+    expectedOutput.printBracketed
+    print "Got:\n"
+    output.printBracketed
+end
+
+print "\n#{testsRun - failed.size} passed"
+print ", #{failed.size} failed" unless failed.empty?
