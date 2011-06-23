@@ -4,7 +4,7 @@ module UScript
 
     describe SpecRunner do
         describe "run" do
-            it "parses a file, executes all unit tests and prints the results" do
+            it "parses a file and executes all tests" do
                 parser = mock("parser")
                 tester = mock("tester")
                 runner = SpecRunner.new(parser, tester)
