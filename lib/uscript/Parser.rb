@@ -1,12 +1,13 @@
 module UScript
 
     class Parser
-        def initialize(io, classParser)
-            @io, @classParser = io, classParser
+        def initialize(io, tokenizerFactory, classParser)
+            @io, @tokenizerFactory, @classParser = io, tokenizerFactory, classParser
         end
         def parse(filename)
             lines = @io.readlines(filename)
-            @classParser.parseLines lines
+            tokenizer = @tokenizerFactory.new(lines)
+            @classParser.parse tokenizer
         end
     end
 end
