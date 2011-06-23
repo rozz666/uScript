@@ -1,5 +1,10 @@
 module UScript
 
+    class ClassParser
+        def parse(tokenizer)
+        end
+    end
+    
     class Parser
         def initialize(io, tokenizerFactory, classParser)
             @io, @tokenizerFactory, @classParser = io, tokenizerFactory, classParser

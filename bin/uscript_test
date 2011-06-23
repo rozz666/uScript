@@ -3,12 +3,8 @@
 uscriptDir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(uscriptDir) unless $LOAD_PATH.include?(uscriptDir)
 
-require 'uscript/SpecRunner'
-require 'uscript/Parser'
-require 'uscript/Tester'
+require 'uscript/SpecRunnerFactory'
 
-parser = UScript::Parser.new
-tester = UScript::Tester.new
-runner = UScript::SpecRunner.new(parser, tester)
+runner = UScript::SpecRunnerFactory.new.create
 runner.run(ARGV[0])
 
